@@ -17,8 +17,11 @@
           </td>
           <td><%= link_to @books.title, book_path(@books) %></td>
           <td><%= @books.body %></td>
+          <!--他ユーザーが投稿した本の編集、削除のリンクを表示させない-->
+          <% if @books.user == current_user %>
           <td><%= link_to 'Edit', edit_book_path(@books), class: "btn btn-sm btn-success edit_book_#{@books.id}" %></td>
           <td><%= link_to 'Destroy', book_path(@books), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@books.id}"%></td>
+          <% end %>
         </tr>
       </table>
     </div>

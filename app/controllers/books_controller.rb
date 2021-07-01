@@ -1,10 +1,12 @@
 class BooksController < ApplicationController
+  # 他ユーザーのbookを編集できないようにする
+  #　下にensure_correct_userに
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
     @book = Book.new
     @books = Book.find(params[:id])
-    @user = User.find(params[:id])
-    p @user
+    @user = @books.user
   end
 
   def index
@@ -28,7 +30,6 @@ class BooksController < ApplicationController
   end
 
 
-
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
@@ -48,6 +49,13 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+  
+  def ensure_correct_user
+    @book = Book.find(params[:id])
+    unless @book.user == current_user
+      redirect_to books_path
+    end
   end
 
 end
