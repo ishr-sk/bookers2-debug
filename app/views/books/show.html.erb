@@ -17,6 +17,21 @@
           </td>
           <td><%= link_to @books.title, book_path(@books) %></td>
           <td><%= @books.body %></td>
+          <td>
+            <% if @book.favorited_by?(current_user) %>
+            <p>
+              <%= link_to book_favorites_path(@books.id), method: :delete do %>
+                ♥<%= @book.favorites.count %>
+              <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to book_favorites_path(@books.id), method: :post do %>
+                ♡<%= @book.favorites.count %>
+              <% end %>
+            </p>
+            <% end %>
+          </td>
           <!--他ユーザーが投稿した本の編集、削除のリンクを表示させない-->
           <% if @books.user == current_user %>
           <td><%= link_to 'Edit', edit_book_path(@books), class: "btn btn-sm btn-success edit_book_#{@books.id}" %></td>
