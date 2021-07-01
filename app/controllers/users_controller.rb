@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # ＠userが投稿したbookを表示する
     @books = @user.books
     @book = Book.new
   end
