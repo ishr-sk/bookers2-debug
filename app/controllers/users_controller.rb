@@ -13,6 +13,18 @@ class UsersController < ApplicationController
     @users = User.all
     @book = Book.new
   end
+  
+  # ===フォロー・フォロワー機能実装のため追加===
+  def follows
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+  
+  def followers
+    user = Use.find(params[:id])
+    @users = user.followers
+  end
+   # =============ここまで=============
 
   def edit
     @user = User.find(params[:id])
