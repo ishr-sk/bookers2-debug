@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'relationship/create'
-  get 'relationship/destroy'
   root 'homes#top'
   devise_for :users
   get 'home/about' => 'homes#about'
+  get 'searches/search'
+  get 'relationship/create'
+  get 'relationship/destroy'
   
   resources :books, only: [:show, :index, :create, :edit, :update, :destroy] do
     # いいね機能
