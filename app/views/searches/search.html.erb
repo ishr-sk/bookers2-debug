@@ -1,4 +1,5 @@
-<h1>Books search for </h1>
+<!--検索した言葉を表示するには(%= params[:word] %)でびっくり！！！！-->
+<h1>Books search for "<%= params[:word] %>"</h1>
   <table class='table table-hover table-inverse'>
     <% if @category == '2' %>
       <thead>
@@ -21,7 +22,7 @@
           </tr>
         <% end %>
       </tbody>
-      
+
       <% else %>
         <thead>
           <tr>

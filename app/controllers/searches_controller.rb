@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
     @category = params[:category]
     search = params[:search]
     word = params[:word]
-    
+
     if @category == "1"
       @user = User.search(search, word)
     else
