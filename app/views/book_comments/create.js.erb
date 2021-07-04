@@ -1,4 +1,4 @@
 <!--この部分のHTMLだけ、renderで部分的に更新する-->
-$(".comments-index").html("<%= j(render 'book_comments/index', book: @book, book_comment: @book_comment) %>");
+$(".comments-<%= @book.id %>").html("<%= j(render 'book_comments/index', book: @book) %>");
 <!--コメント送信後のコメント入力フォームを空にする-->
-$("textarea").val('')
+$(".comments-form").val('');
