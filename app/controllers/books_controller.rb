@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   # 他ユーザーのbookを編集できないようにする
-  #　下にensure_correct_userに
+  #　下にensure_correct_user
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
