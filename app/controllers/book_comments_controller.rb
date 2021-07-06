@@ -14,6 +14,8 @@ class BookCommentsController < ApplicationController
   end
 
   def destroy
+    # (undefined method `book_comments?' for nil:NilClass)エラーが出たから
+    # @bookでbook_commentsにデータが入るようにした
     @book = Book.find(params[:book_id])
     @comment = BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
     # redirect_back(fallback_location: root_path)
